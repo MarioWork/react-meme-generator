@@ -1,5 +1,5 @@
 # React Meme Generator
-This project consists of a React Meme Generator Application that allows the user to add two text inputs to an meme image and generate a new meme iamge.
+This project consists of a React Meme Generator Application that allows the user to add two text inputs to an meme image and generate a new meme image.
 
 ## Technologies
 + Javascript
