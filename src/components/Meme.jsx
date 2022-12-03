@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./Meme.css";
+import useGenerateRandomMeme from "../hooks/use-generate-random-meme";
 
 const Meme = () => {
   const [meme, setMeme] = useState({
@@ -7,24 +8,15 @@ const Meme = () => {
     bottomText: "",
     imageUrl: "http://i.imgflip.com/1bij.jpg",
   });
-  const [memesData, setMemesData] = useState([]);
 
-  useEffect(() => {
-    fetch("https://api.imgflip.com/get_memes")
-      .then((res) => res.json())
-      .then((data) => setMemesData(data.data.memes));
-  });
+  const randomMeme = useGenerateRandomMeme();
 
   //Get a random meme from memesArray
   function getRandomMeme(e) {
     e.preventDefault();
-    const randomNumber = Math.floor(Math.random() * memesData.length);
-
-    const { url } = memesData[randomNumber];
-
     setMeme((prevMeme) => ({
       ...prevMeme,
-      imageUrl: url,
+      imageUrl: randomMeme.url,
     }));
   }
 
@@ -62,7 +54,7 @@ const Meme = () => {
         </button>
       </form>
       <div className="meme--container">
-        <img src={meme.imageUrl} className="meme--image" />
+        <img alt="" src={meme.imageUrl} className="meme--image" />
         <h4 className="meme--top--text">{meme.topText}</h4>
         <h4 className="meme--bottom--text">{meme.bottomText}</h4>
       </div>
