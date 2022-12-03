@@ -14,7 +14,10 @@
 *.log.*
 *.sig
 
+
 pkg/
+
+/build
 
 ### Linux ###
 *~
